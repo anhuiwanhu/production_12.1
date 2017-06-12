@@ -50,3 +50,21 @@ menu_mantbl_subtbl=(select id from OA_CUSTMENU where menucodeset='newMeetingMana
 commit;
 insert into oa_patchinfo (patch_id,patch_editinfo,patch_name,patch_version,patch_time) values(hibernate_sequence.nextval,'Wanhu ezOFFICE','12.1.0.03_SP_20170525','12.1.0.03',sysdate);
 commit;
+
+
+
+
+
+
+
+update OA_CUSTMENU set menu_blone=(select id from OA_CUSTMENU where menucodeset='newMeetingManagement'),
+menu_location=(select id from OA_CUSTMENU where menucodeset='newMeetingManagement'),
+menu_mantbl_subtbl=(select id from OA_CUSTMENU where menucodeset='newMeetingManagement') where menucodeset='newMeetingManagement';
+commit;
+update OA_CUSTMENU set menu_blone=(select id from OA_CUSTMENU where menucodeset='cbdb_menu'),menu_location=(select id from OA_CUSTMENU where menucodeset='cbdb_menu'),
+menu_mantbl_subtbl=(select id from OA_CUSTMENU where menucodeset='cbdb_menu') where menucodeset='cbdb_menu';
+commit;
+alter  table  ez_flow_hi_procinst  modify  WHIR_DEALING_USERS   VARCHAR2(4000);
+commit;
+insert into oa_patchinfo (patch_id,patch_editinfo,patch_name,patch_version,patch_time) values(hibernate_sequence.nextval,'Wanhu ezOFFICE','12.1.0.04_SP_20170610','12.1.0.04',sysdate);
+commit;

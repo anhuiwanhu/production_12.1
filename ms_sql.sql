@@ -38,3 +38,21 @@ menu_mantbl_subtbl=(select id from OA_CUSTMENU where menucodeset='newMeetingMana
 go
 insert into oa_patchinfo (patch_editinfo,patch_name,patch_version,patch_time) values('Wanhu ezOFFICE','12.1.0.03_SP_20170525','12.1.0.03',getdate());
 go
+
+
+
+
+
+
+
+update OA_CUSTMENU set menu_blone=(select id from OA_CUSTMENU where menucodeset='newMeetingManagement'),
+menu_location=(select id from OA_CUSTMENU where menucodeset='newMeetingManagement'),
+menu_mantbl_subtbl=(select id from OA_CUSTMENU where menucodeset='newMeetingManagement') where menucodeset='newMeetingManagement'
+go
+update OA_CUSTMENU set menu_blone=(select id from OA_CUSTMENU where menucodeset='cbdb_menu'),menu_location=(select id from OA_CUSTMENU where menucodeset='cbdb_menu'),
+menu_mantbl_subtbl=(select id from OA_CUSTMENU where menucodeset='cbdb_menu') where menucodeset='cbdb_menu';
+go
+alter  table  ez_flow_hi_procinst  alter column WHIR_DEALING_USERS   NVARCHAR(4000);
+go
+insert into oa_patchinfo (patch_editinfo,patch_name,patch_version,patch_time) values('Wanhu ezOFFICE','12.1.0.04_SP_20170625','12.1.0.04',getdate());
+go

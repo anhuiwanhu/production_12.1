@@ -81,7 +81,7 @@ if(!"".equals(userId)){
                    "workmanager_setup_workstatus,workmanager_setup_orgwrap,workmanager_setup_rmlogin,"+
                    "workmanager_linkman,workmanager_linkman_inner,workmanager_linkman_public,workmanager_linkman_private,"+
                    "workmanager_calendar,workmanager_worklog,workmanager_workreport,workmanager_task,workmanager_personaltools,"+
-                   "workmanager_netdisk,workmanager_filedealwith,workmanager_netdisk,workmanager_pressdeal,Persononduty,";
+                   "workmanager_netdisk,workmanager_filedealwith,workmanager_netdisk,workmanager_pressdeal,Persononduty,workmanager_leaderevent,";
     String canShowMenus = cmBD.getShowMenu(codes, domainId);
     boolean flag=CommonUtils.isADCheckByUserAccount(userAccount);
     boolean authFlag0=cmBD.hasMenuAuth("workmanager_task",userId,orgId);
@@ -253,7 +253,9 @@ if(!"".equals(userId)){
            <%	
 			  LeaderEventBD leaderEventBD = new LeaderEventBD();
 			  boolean isOperateLeader=leaderEventBD.isOperateLeader(Long.valueOf(userId));//当前用户是否是领导日程维护人
-			  boolean isSetedLeader=leaderEventBD.isSetedLeader(Long.valueOf(userId));//当前用户是否是领导日程设置中设置的相关领导 		  			   
+			  boolean isSetedLeader=leaderEventBD.isSetedLeader(Long.valueOf(userId));//当前用户是否是领导日程设置中设置的相关领导
+            boolean authFlag33=cmBD.hasMenuAuth("workmanager_leaderevent",userId,orgId);	
+            if(canShowMenus.indexOf("workmanager_leaderevent")!=-1 && authFlag33==true){			  
           %>
                 <%menuIndex++;%>
 			 ,{id:"menuTitleBox<%=menuIndex%>", pId:-1,iconSkin:"fa fa-cog fa", name:"日程管理", target:'mainFrame'}
@@ -266,7 +268,9 @@ if(!"".equals(userId)){
 		     <%}%>
               ,{id:10000011114, pId:"menuTitleBox<%=menuIndex%>", name:"权限设置", url:"<%=rootPath%>/custormerbiz!goRightMenu.action?menuId=173121", target:"mainFrame",iconSkin:"fa fa"}
 			//<!-- 领导日程 [END] -->
+			<%}%>
 			//<!-- 工作日志 [BEGIN] -->
+			
 			<%  
 				boolean authFlag7=cmBD.hasMenuAuth("workmanager_worklog",userId,orgId);
 				if(canShowMenus.indexOf("workmanager_worklog")!=-1 && authFlag7==true){
