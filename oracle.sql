@@ -68,3 +68,12 @@ alter  table  ez_flow_hi_procinst  modify  WHIR_DEALING_USERS   VARCHAR2(4000);
 commit;
 insert into oa_patchinfo (patch_id,patch_editinfo,patch_name,patch_version,patch_time) values(hibernate_sequence.nextval,'Wanhu ezOFFICE','12.1.0.04_SP_20170610','12.1.0.04',sysdate);
 commit;
+
+
+
+
+
+
+
+insert into oa_patchinfo (patch_id,patch_editinfo,patch_name,patch_version,patch_time) values(hibernate_sequence.nextval,'Wanhu ezOFFICE','12.1.0.05_SP_20170623','12.1.0.05',sysdate);
+commit;

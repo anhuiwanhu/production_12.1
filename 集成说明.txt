@@ -62,3 +62,30 @@
 4、执行数据库升级脚本（分oralce、sqlserver两种类型库）
 
 5、清服务端缓存，启动OA服务，验证系统功能
+
+
+
+
+
+
+
+
+1、停OA服务
+
+2、备份生产环境程序、数据库
+
+3、覆盖产品补丁包到OA安装目录d:\jboss
+
+4、修改..\defaultroot.war/WEB-INF/config/whconfig.xml，增加如下配置（勿重复添加）：
+
+ <!-- webApp地址配置， pc可能需要推送信息给 webapp -->
+ <webappInfo> 
+    <!-- 1 开启 0 关闭 -->
+    <Property name="qyuse" value="0"/>
+	 <!-- webapp    http://ip:端口/根目录 -->
+    <Property name="serverAddress" value="http://192.168.7.138:9115/defaultroot"/>
+</webappInfo>
+
+5、执行数据库升级脚本（分oralce、sqlserver两种类型库）
+
+6、清服务端缓存，启动OA服务，验证系统功能
